@@ -1,0 +1,38 @@
+/* Hide the stock portal art until the extension has applied the user's choice,
+   so the original never flashes. Matches by filename so CDN hash changes still work. */
+html:not([data-ncp-ready]) #portal img[src*="/landing/portal-art."],
+html:not([data-ncp-ready]) .landing-portal-art img {
+  visibility: hidden !important;
+}
+
+/* "Hidden" mode: leave the blue plate empty. */
+img[data-ncp-mode="hidden"] {
+  visibility: hidden !important;
+}
+
+/* Custom/built-in art is authored at 3:1. The site sizes the stock SVG at its
+   natural 575x844 with a parallax drift, so undo that and fill the plate exactly. */
+.landing-portal-art .hw-noise > img[data-ncp-mode="art"],
+img[data-ncp-mode="art"] {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  transform: none !important;
+  translate: none !important;
+  object-fit: cover !important;
+  object-position: var(--ncp-pos, center) !important;
+}
+
+/* The plate blends its art with "plus-lighter" over the blue and adds a grain
+   overlay, which would wash out full-colour art. Show ours as-is. */
+.hw-noise:has(> img[data-ncp-mode="art"]) {
+  mix-blend-mode: normal !important;
+  isolation: auto !important;
+}
+.hw-noise:has(> img[data-ncp-mode="art"])::after {
+  display: none !important;
+}

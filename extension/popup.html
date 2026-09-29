@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Customizable Nous Portal</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="" width="28" height="28">
+    <h1>Customizable Nous Portal</h1>
+  </header>
+
+  <label class="switch">
+    <input type="checkbox" id="noGirl">
+    <span>No Nous Girl — hide her art everywhere (including Random)</span>
+  </label>
+
+  <section class="grid" id="art"></section>
+
+  <section class="grid" id="extras">
+    <div class="choice" data-mode="custom" id="customBtn" role="button" tabindex="0">
+      <div class="ph" id="customThumb">No image yet</div><span>Your image</span>
+      <button class="dice" data-id="custom" title="Include in Random">🎲</button>
+    </div>
+    <div class="choice" data-mode="random" role="button" tabindex="0"><div class="ph">🎲</div><span>Random each visit</span></div>
+    <div class="choice" data-mode="original" role="button" tabindex="0"><div class="ph">↺</div><span>Original</span></div>
+    <div class="choice" data-mode="hidden" role="button" tabindex="0"><div class="ph blue"></div><span>Hidden</span></div>
+  </section>
+
+  <section class="upload">
+    <label class="btn" for="file">Upload image…</label>
+    <input type="file" id="file" accept="image/*" hidden>
+    <select id="pos" title="Which part of your image to keep in the 3:1 banner">
+      <option value="center">Keep center</option>
+      <option value="top">Keep top</option>
+      <option value="bottom">Keep bottom</option>
+      <option value="left">Keep left</option>
+      <option value="right">Keep right</option>
+    </select>
+    <button class="btn ghost" id="clear">Remove</button>
+  </section>
+  <p class="hint" id="status">Click art to show it. 🎲 on a tile = include it in Random. Changes apply instantly.</p>
+  <p class="credits">Art by the Nous community: 123mikeyd · Djm · LocutusOfTheEye</p>
+  <script src="catalog.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
